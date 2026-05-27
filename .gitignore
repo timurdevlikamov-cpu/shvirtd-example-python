@@ -1,15 +1,4 @@
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-
 .env
 *.env
-secrets.json
-config/settings_local.py
-
-*.log
-logs/
-tmp/
-temp/
-
+README.md
+schema.pdf
