@@ -2,6 +2,7 @@ services:
   work:
     build:
       context: .
+      dockerfile: Dockerfile.python
     ports:
       - "5000:5000"
     volumes:
