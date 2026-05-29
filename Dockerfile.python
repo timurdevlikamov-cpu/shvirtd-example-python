@@ -19,10 +19,12 @@ FROM python:3.12-slim AS worker
 ## Рабочая директория
 WORKDIR /app
 
-COPY --from=builder /app/venv ./venv
-COPY . .
+RUN addgroup --system python && \
+    adduser --system --disabled-password  --ingroup python python && chown python:python /app
+USER python
 
-ENV PATH="/app/venv/bin:$PATH"
+COPY --chown=python:python --from=builder /app/venv ./venv
+COPY --chown=python:python . .
 
 EXPOSE 5000
 
