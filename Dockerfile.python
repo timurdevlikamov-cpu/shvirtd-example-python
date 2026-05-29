@@ -1,4 +1,4 @@
-FROM python:3.12-slim as builder
+FROM python:3.12-slim AS builder
 
 #  Ваш код здесь #
 
@@ -17,7 +17,7 @@ COPY requirements.txt ./
 ## Устанавливаем зависимости
 RUN pip install --no-cache-dir -r requirements.txt
 
-FROM python:3.12-slim as worker
+FROM python:3.12-slim AS worker
 
 ## Рабочая директория
 WORKDIR /app
