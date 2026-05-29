@@ -9,7 +9,7 @@ docker network rm my_app_network || true
 docker network create --subnet=172.20.0.0/16 my_app_network
 
 #Сборка обращза 
-docker build -t shvirtd-example-python -f Dockerfile.python .
+docker build -t my-python-app -f Dockerfile.python .
 
 #Запуск контейнера с Mysql в сети 'my_app_network'. Благо вольюм сздается автоматически!
 docker run -d --name db_mysql --network my_app_network --ip 172.20.0.10 -v 'db_data:/var/lib/mysql' -e 'MYSQL_ROOT_PASSWORD=YtReWq4321' -e 'MYSQL_DATABASE=virtd' -e 'MYSQL_USER=app' -e 'MYSQL_PASSWORD=QwErTy1234' mysql:8.0
