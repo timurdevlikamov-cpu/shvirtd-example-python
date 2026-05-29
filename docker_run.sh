@@ -1,8 +1,8 @@
-#Создаем сеть 'wordpress' : host, bridge, no
-docker network create --driver=bridge wordpress
+#Создаем сеть 'my_app_network'
+docker network create --subnet=172.20.0.0/16 my_app_network
 
-#Запускаем контейнер с Mysql в сети 'wordpress'. Благо вольюм сздается автоматически!
-docker run -d --network='wordpress' --hostname='db' -v 'db_data:/var/lib/mysql' -e 'MYSQL_ROOT_PASSWORD=somewordpress' -e 'MYSQL_DATABASE=wordpress' -e 'MYSQL_USER=wordpress' -e 'MYSQL_PASSWORD=wordpress' mariadb:10.6.4-focal  --default-authentication-plugin='mysql_native_password'
+#Запускаем контейнер с Mysql в сети 'my_app_network'. Благо вольюм сздается автоматически!
+docker run -d --name db_mysql --network my_app_network --ip 172.20.0.10 -e MYSQL_ROOT_PASSWORD=password mysql:8.0
 
-#Запускаем контейнер с wordpress в сети 'wordpress'
-docker run -d --network='wordpress' --hostname='wordpress' -v 'wp_data:/var/www/html' -p '80:80' -e 'WORDPRESS_DB_HOST=db' -e 'WORDPRESS_DB_USER=wordpress' -e 'WORDPRESS_DB_PASSWORD=wordpress' -e 'WORDPRESS_DB_NAME=wordpress' wordpress:latest
+#Запускаем контейнер с wordpress в сети 'my_app_network'
+docker run -d --name web_python --network my_app_network --ip 172.20.0.5 -p 8080:5000 my-python-app
