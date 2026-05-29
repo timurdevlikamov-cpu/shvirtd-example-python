@@ -8,6 +8,9 @@ WORKDIR /app
 #Установка компилятора gcc
 RUN apt-get update && apt-get install -y --no-install-recommends build-essential && rm -rf /var/lib/apt/lists/*
 
+RUN python -m venv /app/venv
+ENV PATH="/app/venv/bin:$PATH"
+
 ## Копируем всё содержимое директории в рабочую директорию (чтобы не копировать по отдельным файлам)
 COPY requirements.txt .
 
