@@ -1,8 +1,9 @@
 #!/bin/sh
 
-#Удаляем старые конейнеры
+#Удаляем старые конейнеры и сеть
 docker rm -f db_mysql 2>/dev/null
 docker rm -f web_python 2>/dev/null
+docker network rm my_app_network || true
 
 #Создаем сеть 'my_app_network'
 docker network create --subnet=172.20.0.0/16 my_app_network
