@@ -3,6 +3,7 @@
 #Удаляем старые конейнеры и сеть
 ###docker rm -f db_mysql web_python reverse_proxy ingress_proxy 2>/dev/null
 ###docker network rm shvirtd_network || true
+docker rm -f db_mysql web_python 2>/dev/null
 
 #Создаем сеть 'shvirtd_network'
 ###docker network create --subnet=172.20.0.0/16 shvirtd_network
