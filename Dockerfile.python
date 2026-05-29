@@ -12,7 +12,7 @@ RUN python -m venv /app/venv
 ENV PATH="/app/venv/bin:$PATH"
 
 ## Копируем всё содержимое директории в рабочую директорию (чтобы не копировать по отдельным файлам)
-COPY requirements.txt .
+COPY requirements.txt ./
 
 ## Устанавливаем зависимости
 RUN pip install --no-cache-dir -r requirements.txt
@@ -29,7 +29,7 @@ USER python
 COPY --chown=python:python --from=builder /app/venv ./venv
 COPY --chown=python:python . .
 
-EXPOSE 5000
+ENV PATH="/app/venv/bin:$PATH"
 
 # Запускаем приложение с помощью uvicorn, делая его доступным по сети
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000"]
