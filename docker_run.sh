@@ -19,8 +19,10 @@ sleep 30
 docker run -d --name web_python --network shvirtd_network --ip 172.20.0.5 -e MYSQL_ROOT_PASSWORD="YtReWq4321" -e MYSQL_DATABASE="virtd" -e MYSQL_USER="app" -e MYSQL_PASSWORD="QwErTy1234" shvirtd_network
 
 #Запуск Reverse Proxy
-docker run -d --name reverse_proxy -p 8080:80 nginx:alpine
+###docker run -d --name reverse_proxy -p 8080:80 nginx:alpine
 
 #Запуск Ingress Proxy
-docker run -d --name $INGRESS_PROXY_CONTAINER -p 8090:80 --add-host=host.docker.internal:host-gateway nginx:alpine
+###docker run -d --name $INGRESS_PROXY_CONTAINER -p 8090:80 --add-host=host.docker.internal:host-gateway nginx:alpine
 
+#Быстрый старт
+docker compose -f proxy.yaml up -d
