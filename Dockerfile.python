@@ -6,8 +6,7 @@ FROM python:3.12-slim as builder
 WORKDIR /app
 
 #Установка компилятора gcc
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends gcc
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential && rm -rf /var/lib/apt/lists/*
 
 RUN python -m venv /app/venv
 ENV PATH="/app/venv/bin:$PATH"
@@ -31,6 +30,8 @@ COPY --chown=python:python --from=builder /app/venv ./venv
 COPY --chown=python:python . .
 
 ENV PATH="/app/venv/bin:$PATH"
+
+EXPOSE 5000
 
 # Запускаем приложение с помощью uvicorn, делая его доступным по сети
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000"]
