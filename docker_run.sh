@@ -34,8 +34,8 @@
 docker compose down
 
 #Решение ошибки 'failed to create task for container'
-mkdir -p nginx/ingress haproxy/reverse
-touch nginx/ingress/default.conf nginx/ingress/nginx.conf haproxy/reverse/haproxy.cfg
+###mkdir -p nginx/ingress haproxy/reverse
+###touch nginx/ingress/default.conf nginx/ingress/nginx.conf haproxy/reverse/haproxy.cfg
 
 #Сборка и запуск
 docker compose up --build -d
