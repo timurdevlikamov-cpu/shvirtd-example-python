@@ -52,7 +52,7 @@ services:
     network_mode: host
     volumes:
       - ./nginx/ingress/default.conf:/etc/nginx/conf.d/default.conf:rw
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:rw
+      - ./nginx/ingress/nginx.conf:/etc/nginx/nginx.conf:rw
 
 networks:
   docker_network:
