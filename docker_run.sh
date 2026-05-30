@@ -38,7 +38,8 @@ docker compose down
 ###touch nginx/ingress/default.conf nginx/ingress/nginx.conf haproxy/reverse/haproxy.cfg
 
 #Сборка и запуск
-docker compose up --build -d
+###docker compose up --build -d
+docker compose -f proxy.yaml -f compose.yaml up --build -d
 
 #Ожидание запуска
 echo "Ждём запуска БД"
