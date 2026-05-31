@@ -48,14 +48,14 @@ services:
   ###  depends_on:
   ###    - web-python
 
-  reverse-proxy:
-    image: haproxy:2.4
-    container_name: reverse-proxy
-    restart: always
-    networks:
-      - docker_network
-    depends_on:
-      - web-python
+###  reverse-proxy:
+###    image: haproxy:2.4
+###    container_name: reverse-proxy
+###    restart: always
+###    networks:
+###      - docker_network
+###    depends_on:
+###      - web-python
       
 ###ingress-proxy:
 ###    image: nginx:latest
@@ -66,12 +66,12 @@ services:
 ###      - ./nginx/ingress/default.conf:/etc/nginx/conf.d/default.conf:rw
 ###      - ./nginx/ingress/nginx.conf:/etc/nginx/nginx.conf:rw
 
-  ingress-proxy:
-    image: nginx:latest
-    container_name: ingress-proxy
-    restart: always
-    ###networks:
-    ###  - docker_network 
+###  ingress-proxy:
+###    image: nginx:latest
+###    container_name: ingress-proxy
+###    restart: always
+###    networks:
+###      - docker_network 
 
 ###networks:
 ###  docker_network:
