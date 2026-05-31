@@ -31,7 +31,7 @@
 ###docker run -d --name ingress_proxy -p 8090:80 --add-host=host.docker.internal:host-gateway nginx:alpine
 
 #Останавливаем текущие запущеные контейнерв
-docker compose down
+###docker compose down
 
 #Решение ошибки 'failed to create task for container'
 ###mkdir -p nginx/ingress haproxy/reverse
