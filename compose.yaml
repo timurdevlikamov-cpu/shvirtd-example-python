@@ -15,7 +15,8 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     networks:
-      docker_network:
+      ###docker_network:
+      backend:
         ipv4_address: 172.20.0.10
 
   web-python:
@@ -30,7 +31,8 @@ services:
       DB_PASSWORD: ${MYSQL_PASSWORD}
       DB_NAME: ${MYSQL_DATABASE}
     networks:
-      docker_network:
+      ###docker_network:
+      backend:
         ipv4_address: 172.20.0.5
     depends_on:
       - db-mysql 
